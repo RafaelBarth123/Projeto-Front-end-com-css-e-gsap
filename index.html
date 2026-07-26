@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Vantra Logística | Movendo o Brasil com Confiança</title>
+<meta name="description" content="Vantra Logística — transporte rodoviário e soluções logísticas inteligentes para todo o Brasil. Rastreamento em tempo real, frota moderna e entregas seguras." />
+<link rel="icon" href="data:,">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/journey.css">
+<link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+
+<!-- ============ CUSTOM CURSOR ============ -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ============ LOADER ============ -->
+<div class="loader" id="loader">
+  <div class="loader__inner">
+    <div class="loader__logo">VANTRA</div>
+    <div class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></div>
+    <div class="loader__percent" id="loaderPercent">0%</div>
+  </div>
+</div>
+
+<!-- ============ SCROLL PROGRESS ============ -->
+<div class="progress-bar"><span class="progress-bar__fill" id="progressFill"></span></div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#hero" class="navbar__logo">VANTRA<span>.</span></a>
+    <nav class="navbar__nav" id="navMenu">
+      <a href="#about" data-nav>Sobre</a>
+      <a href="#services" data-nav>Serviços</a>
+      <a href="#fleet" data-nav>Frota</a>
+      <a href="#tracking" data-nav>Rastreamento</a>
+      <a href="#gallery" data-nav>Galeria</a>
+      <a href="#contact" data-nav>Contato</a>
+    </nav>
+    <a href="#contact" class="btn btn--ghost navbar__cta magnetic">Solicitar Cotação</a>
+    <button class="navbar__burger" id="burger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE MENU ============ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" data-nav>Sobre</a>
+  <a href="#services" data-nav>Serviços</a>
+  <a href="#fleet" data-nav>Frota</a>
+  <a href="#tracking" data-nav>Rastreamento</a>
+  <a href="#coverage" data-nav>Cobertura</a>
+  <a href="#gallery" data-nav>Galeria</a>
+  <a href="#testimonials" data-nav>Depoimentos</a>
+  <a href="#contact" data-nav>Contato</a>
+</div>
+
+<main id="smooth-wrapper">
+<div id="smooth-content">
+
+  <!-- ============================================================
+       HERO
+  ============================================================= -->
+  <section id="hero" class="hero">
+    <div class="hero__bg">
+      <div class="hero__sky"></div>
+      <div class="hero__sun-glow"></div>
+      <div class="hero__grid"></div>
+      <div class="hero__particles" id="heroParticles"></div>
+      <div class="hero__road"></div>
+      <div class="hero__road-lines"></div>
+    </div>
+
+    <div class="hero__truck-stage" id="heroTruckStage" data-truck data-truck-size="hero"></div>
+
+    <div class="hero__content">
+      <p class="hero__eyebrow" data-reveal>Transporte &amp; Logística Premium</p>
+      <h1 class="hero__title" data-split-chars>Sua carga.<br>Nosso compromisso.</h1>
+      <p class="hero__subtitle" data-reveal>Conectamos todo o Brasil com precisão, tecnologia e uma frota que nunca para.</p>
+      <div class="hero__actions" data-reveal>
+        <a href="#services" class="btn btn--primary magnetic"><span>Ver Serviços</span></a>
+        <a href="#tracking" class="btn btn--outline magnetic"><span>Rastrear Carga</span></a>
+      </div>
+    </div>
+
+    <div class="hero__scroll-cue" data-reveal>
+      <span>Role para iniciar a viagem</span>
+      <div class="hero__scroll-line"><i></i></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       THE JOURNEY — scroll storytelling driven by the truck
+  ============================================================= -->
+  <div class="journey" id="journey">
+
+    <!-- SCENE 01 — DEPARTURE -->
+    <section class="scene scene--depart" data-scene="depart">
+      <div class="scene__bg">
+        <div class="layer layer--sky-day"></div>
+        <div class="layer layer--sun"></div>
+        <div class="layer layer--clouds">
+          <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+        </div>
+        <div class="layer layer--mountains"></div>
+        <div class="layer layer--hq">
+          <div class="hq-building"><span class="hq-logo">VANTRA</span></div>
+        </div>
+        <div class="layer layer--trees">
+          <span class="tree" style="--i:0"></span><span class="tree" style="--i:1"></span>
+          <span class="tree" style="--i:2"></span><span class="tree" style="--i:3"></span>
+          <span class="tree" style="--i:4"></span><span class="tree" style="--i:5"></span>
+          <span class="tree" style="--i:6"></span><span class="tree" style="--i:7"></span>
+        </div>
+        <div class="layer layer--sign">
+          <div class="road-sign"><span>BR-101<br>→ TODO O BRASIL</span></div>
+        </div>
+        <div class="layer layer--road-depart"><div class="road-lane-lines"></div></div>
+      </div>
+      <div class="truck-stage" data-truck data-truck-size="scene"></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">01 — A jornada começa</p>
+        <h2 class="scene__title" data-split-lines>Há mais de 20 anos<br>transportando confiança.</h2>
+      </div>
+    </section>
+
+    <!-- SCENE 02 — CITY -->
+    <section class="scene scene--city" data-scene="city">
+      <div class="scene__bg">
+        <div class="layer layer--sky-city"></div>
+        <div class="layer layer--buildings-back">
+          <span class="building" style="--i:0"></span><span class="building" style="--i:1"></span>
+          <span class="building" style="--i:2"></span><span class="building" style="--i:3"></span>
+          <span class="building" style="--i:4"></span>
+        </div>
+        <div class="layer layer--crane">
+          <svg viewBox="0 0 200 220" class="crane-svg">
+            <rect x="95" y="20" width="10" height="180" fill="currentColor"/>
+            <rect x="30" y="18" width="150" height="8" fill="currentColor"/>
+            <rect x="30" y="18" width="8" height="60" fill="currentColor"/>
+            <line x1="100" y1="26" x2="40" y2="70" stroke="currentColor" stroke-width="3"/>
+            <line x1="100" y1="26" x2="160" y2="26" stroke="currentColor" stroke-width="3"/>
+            <line class="crane-cable" x1="40" y1="70" x2="40" y2="140" stroke="currentColor" stroke-width="3"/>
+            <rect class="crane-hook" x="20" y="140" width="40" height="30" rx="3" fill="var(--clr-amber)"/>
+          </svg>
+        </div>
+        <div class="layer layer--buildings-front">
+          <span class="building building--front" style="--i:0"></span>
+          <span class="building building--front" style="--i:1"></span>
+          <span class="building building--front" style="--i:2"></span>
+          <span class="building building--front" style="--i:3"></span>
+        </div>
+        <div class="layer layer--containers-city">
+          <span class="container" style="--i:0"></span><span class="container" style="--i:1"></span>
+          <span class="container" style="--i:2"></span>
+        </div>
+        <div class="layer layer--road-city"><div class="road-lane-lines"></div></div>
+      </div>
+      <div class="truck-stage" data-truck data-truck-size="scene"></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">02 — Rumo ao centro urbano</p>
+        <h2 class="scene__title" data-split-lines>Logística<br>Inteligente.</h2>
+      </div>
+    </section>
+
+    <!-- SCENE 03 — LOGISTICS CENTER / WAREHOUSE -->
+    <section class="scene scene--warehouse" data-scene="warehouse">
+      <div class="scene__bg">
+        <div class="layer layer--sky-warehouse"></div>
+        <div class="layer layer--warehouse-wall">
+          <div class="warehouse-roofline"></div>
+          <div class="warehouse-opening"></div>
+          <div class="warehouse-door warehouse-door--left"></div>
+          <div class="warehouse-door warehouse-door--right"></div>
+        </div>
+        <div class="layer layer--forklift">
+          <svg viewBox="0 0 140 100" class="forklift-svg">
+            <rect x="10" y="40" width="55" height="30" rx="4" fill="var(--clr-amber)"/>
+            <rect x="10" y="15" width="26" height="28" rx="3" fill="var(--clr-amber-dark)"/>
+            <rect x="60" y="10" width="6" height="60" fill="#2b2f38"/>
+            <rect class="forklift-fork" x="66" y="55" width="34" height="6" fill="#2b2f38"/>
+            <circle cx="24" cy="74" r="10" fill="#111"/>
+            <circle cx="55" cy="74" r="10" fill="#111"/>
+          </svg>
+        </div>
+        <div class="layer layer--pallets">
+          <span class="pallet" style="--i:0"></span><span class="pallet" style="--i:1"></span><span class="pallet" style="--i:2"></span>
+        </div>
+        <div class="layer layer--containers-stack">
+          <span class="stack-container" style="--i:0"></span>
+          <span class="stack-container" style="--i:1"></span>
+          <span class="stack-container" style="--i:2"></span>
+        </div>
+        <div class="layer layer--floor-warehouse"></div>
+      </div>
+      <div class="truck-stage" data-truck data-truck-size="scene"></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">03 — Centro de distribuição</p>
+        <h2 class="scene__title" data-split-lines>Armazenagem<br>moderna.</h2>
+      </div>
+    </section>
+
+    <!-- SCENE 04 — HIGHWAY, DAY TO NIGHT -->
+    <section class="scene scene--highway" data-scene="highway">
+      <div class="scene__bg">
+        <div class="layer layer--sky-daynight">
+          <div class="sky-part sky-part--day"></div>
+          <div class="sky-part sky-part--night"></div>
+        </div>
+        <div class="layer layer--sun-moving"><div class="sun-disc"></div></div>
+        <div class="layer layer--moon-rising"><div class="moon-disc"></div></div>
+        <div class="layer layer--stars" id="starsLayer"></div>
+        <div class="layer layer--hills"></div>
+        <div class="layer layer--hills-2"></div>
+        <div class="layer layer--road-highway"><div class="road-lane-lines road-lane-lines--fast"></div></div>
+        <div class="layer layer--roadside-lights">
+          <span class="light-pole" style="--i:0"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:1"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:2"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:3"><i class="light-pole__lamp"></i></span>
+        </div>
+      </div>
+      <div class="truck-stage" data-truck data-truck-size="scene"></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">04 — Estrada afora</p>
+        <h2 class="scene__title" data-split-lines>Entregamos para<br>todo o Brasil.</h2>
+      </div>
+    </section>
+
+    <!-- SCENE 05 — STORM -->
+    <section class="scene scene--storm" data-scene="storm">
+      <div class="scene__bg">
+        <div class="layer layer--sky-storm"></div>
+        <div class="layer layer--lightning" id="lightningLayer"></div>
+        <div class="layer layer--fog"></div>
+        <div class="layer layer--hills-storm"></div>
+        <div class="layer layer--rain" id="rainLayer"></div>
+        <div class="layer layer--road-storm">
+          <div class="road-lane-lines road-lane-lines--fast"></div>
+          <div class="road-reflection"></div>
+        </div>
+      </div>
+      <div class="truck-stage" data-truck data-truck-size="scene"></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">05 — Enfrentando a tempestade</p>
+        <h2 class="scene__title" data-split-lines>Compromisso em<br>qualquer condição.</h2>
+      </div>
+    </section>
+
+    <!-- SCENE 06 — DELIVERY -->
+    <section class="scene scene--delivery" data-scene="delivery">
+      <div class="scene__bg">
+        <div class="layer layer--sky-delivery"></div>
+        <div class="layer layer--client-building"></div>
+        <div class="layer layer--client-person">
+          <svg viewBox="0 0 60 120" class="client-svg">
+            <circle cx="30" cy="20" r="14" fill="#e8b28c"/>
+            <rect x="14" y="36" width="32" height="50" rx="12" fill="var(--clr-amber)"/>
+            <rect x="10" y="86" width="16" height="30" rx="6" fill="#2b2f38"/>
+            <rect x="34" y="86" width="16" height="30" rx="6" fill="#2b2f38"/>
+          </svg>
+        </div>
+        <div class="layer layer--boxes">
+          <span class="box" style="--i:0"></span><span class="box" style="--i:1"></span><span class="box" style="--i:2"></span>
+        </div>
+        <div class="layer layer--floor-delivery"></div>
+      </div>
+      <div class="truck-stage truck-stage--parked" data-truck data-truck-size="scene" data-truck-doors></div>
+      <div class="scene__content">
+        <p class="scene__eyebrow">06 — Missão cumprida</p>
+        <h2 class="scene__title" data-split-lines>Sua carga entregue<br>com segurança.</h2>
+      </div>
+    </section>
+
+  </div><!-- /.journey -->
+
+  <!-- ============================================================
+       ABOUT
+  ============================================================= -->
+  <section id="about" class="about">
+    <div class="container about__grid">
+      <div class="about__media" data-parallax="0.15">
+        <div class="about__image-frame">
+          <div class="about__image"></div>
+          <div class="about__badge">
+            <strong>20+</strong>
+            <span>anos de estrada</span>
+          </div>
+        </div>
+      </div>
+      <div class="about__text">
+        <p class="section-eyebrow" data-reveal>Quem somos</p>
+        <h2 class="section-title" data-split-lines>Movemos o Brasil<br>com precisão e propósito.</h2>
+        <p class="about__desc" data-reveal>A Vantra nasceu para transformar a maneira como o Brasil se conecta. Unimos frota moderna, tecnologia de rastreamento e uma equipe obcecada por prazos para entregar mais do que carga — entregamos confiança.</p>
+        <ul class="about__list" data-reveal>
+          <li><span class="dot"></span>Frota própria com manutenção preventiva contínua</li>
+          <li><span class="dot"></span>Rastreamento via satélite em tempo real</li>
+          <li><span class="dot"></span>Cobertura em todas as regiões do país</li>
+          <li><span class="dot"></span>Operação 24 horas, 7 dias por semana</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SERVICES
+  ============================================================= -->
+  <section id="services" class="services">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow" data-reveal>O que fazemos</p>
+        <h2 class="section-title" data-split-lines>Soluções completas para<br>sua cadeia logística.</h2>
+      </div>
+      <div class="services__grid">
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><path d="M4 32V12a2 2 0 0 1 2-2h20v22H6a2 2 0 0 1-2-2Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M26 20h10l8 8v4a2 2 0 0 1-2 2h-16z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="14" cy="36" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="34" cy="36" r="4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Transporte Rodoviário</h3>
+          <p>Cargas fracionadas e dedicadas com rotas otimizadas em toda a malha nacional.</p>
+        </article>
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><rect x="6" y="14" width="36" height="24" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M6 22h36M16 14v24M26 14v24M36 14v24" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Armazenagem</h3>
+          <p>Centros de distribuição modernos com gestão inteligente de estoque.</p>
+        </article>
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 14v10l7 4" stroke="currentColor" stroke-width="2" fill="none"/></svg></div>
+          <h3>Rastreamento 24/7</h3>
+          <p>Visibilidade total da sua carga do embarque até a entrega final.</p>
+        </article>
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><path d="M24 4 6 12v10c0 11 7.7 18.6 18 22 10.3-3.4 18-11 18-22V12Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 24l6 6 10-12" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Carga Segurada</h3>
+          <p>Proteção total do início ao fim, com seguro amplo para todo tipo de carga.</p>
+        </article>
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><path d="M4 24h10l4-8 6 16 4-8h16" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Logística Expressa</h3>
+          <p>Entregas urgentes com prazos reduzidos sem abrir mão da segurança.</p>
+        </article>
+        <article class="service-card card-3d">
+          <div class="service-card__icon"><svg viewBox="0 0 48 48"><path d="M24 4C13 4 4 13 4 24s9 20 20 20 20-9 20-20S35 4 24 4Z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 24h40M24 4c5 5.5 8 12.5 8 20s-3 14.5-8 20c-5-5.5-8-12.5-8-20s3-14.5 8-20Z" fill="none" stroke="currentColor" stroke-width="2"/></svg></div>
+          <h3>Cobertura Nacional</h3>
+          <p>Presença ativa nas 27 unidades federativas do Brasil.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FLEET
+  ============================================================= -->
+  <section id="fleet" class="fleet">
+    <div class="fleet__pin">
+      <div class="container">
+        <div class="section-head section-head--light">
+          <p class="section-eyebrow" data-reveal>Nossa frota</p>
+          <h2 class="section-title" data-split-lines>Tecnologia sobre rodas.</h2>
+        </div>
+      </div>
+      <div class="fleet__track" id="fleetTrack">
+        <div class="fleet-slide">
+          <div class="fleet-slide__truck fleet-slide__truck--1"></div>
+          <h3>Cavalo Mecânico 6x4</h3>
+          <p>Potência e eficiência para longas distâncias com o menor custo por km.</p>
+        </div>
+        <div class="fleet-slide">
+          <div class="fleet-slide__truck fleet-slide__truck--2"></div>
+          <h3>Bitrem Graneleiro</h3>
+          <p>Capacidade ampliada para cargas de grande volume com segurança.</p>
+        </div>
+        <div class="fleet-slide">
+          <div class="fleet-slide__truck fleet-slide__truck--3"></div>
+          <h3>Baú Refrigerado</h3>
+          <p>Controle de temperatura de ponta a ponta para cargas sensíveis.</p>
+        </div>
+        <div class="fleet-slide">
+          <div class="fleet-slide__truck fleet-slide__truck--4"></div>
+          <h3>Sider Urbano</h3>
+          <p>Agilidade de carga e descarga em centros urbanos densos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TRACKING
+  ============================================================= -->
+  <section id="tracking" class="tracking">
+    <div class="container tracking__grid">
+      <div class="tracking__text">
+        <p class="section-eyebrow" data-reveal>Rastreamento</p>
+        <h2 class="section-title" data-split-lines>Sua carga, visível<br>em tempo real.</h2>
+        <p class="about__desc" data-reveal>Acompanhe cada quilômetro da sua entrega com nossa plataforma de rastreamento via satélite. Notificações automáticas, previsão de chegada e histórico completo da rota.</p>
+        <div class="tracking__form" data-reveal>
+          <input type="text" placeholder="Digite o código de rastreio" aria-label="Código de rastreio">
+          <button class="btn btn--primary magnetic"><span>Rastrear</span></button>
+        </div>
+      </div>
+      <div class="tracking__map" data-parallax="0.1">
+        <svg viewBox="0 0 400 420" class="brazil-map">
+          <path d="M120 20 L220 30 L260 70 L300 90 L320 140 L300 190 L320 230 L300 280 L260 330 L220 380 L160 400 L120 370 L90 320 L60 260 L50 200 L70 140 L60 90 L90 50 Z" fill="rgba(255,122,26,0.08)" stroke="var(--clr-amber)" stroke-width="1.5"/>
+          <circle class="map-dot" cx="180" cy="140" r="5"/>
+          <circle class="map-dot" cx="230" cy="220" r="5"/>
+          <circle class="map-dot" cx="150" cy="300" r="5"/>
+          <circle class="map-dot map-dot--active" cx="200" cy="230" r="7"/>
+          <path class="map-route" d="M180 140 Q 210 190 200 230 T 150 300" fill="none" stroke="var(--clr-amber)" stroke-width="2" stroke-dasharray="6 6"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       COVERAGE
+  ============================================================= -->
+  <section id="coverage" class="coverage">
+    <div class="container">
+      <div class="section-head">
+        <p class="section-eyebrow" data-reveal>Alcance</p>
+        <h2 class="section-title" data-split-lines>Cobertura nacional completa.</h2>
+      </div>
+      <div class="coverage__grid">
+        <div class="coverage-stat" data-reveal><strong>27</strong><span>Estados atendidos</span></div>
+        <div class="coverage-stat" data-reveal><strong>5.500+</strong><span>Municípios</span></div>
+        <div class="coverage-stat" data-reveal><strong>18</strong><span>Centros de distribuição</span></div>
+        <div class="coverage-stat" data-reveal><strong>24h</strong><span>Operação contínua</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       GALLERY
+  ============================================================= -->
+  <section id="gallery" class="gallery">
+    <div class="section-head">
+      <p class="section-eyebrow" data-reveal>Galeria</p>
+      <h2 class="section-title" data-split-lines>Cada detalhe da operação.</h2>
+    </div>
+    <div class="gallery__row" id="galleryRow">
+      <div class="gallery-item gallery-item--1"><span>Pátio de Frota</span></div>
+      <div class="gallery-item gallery-item--2"><span>Carregamento</span></div>
+      <div class="gallery-item gallery-item--3"><span>Rodovia</span></div>
+      <div class="gallery-item gallery-item--4"><span>Centro de Distribuição</span></div>
+      <div class="gallery-item gallery-item--5"><span>Manutenção</span></div>
+      <div class="gallery-item gallery-item--6"><span>Entrega Final</span></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+  ============================================================= -->
+  <section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-head section-head--light">
+        <p class="section-eyebrow" data-reveal>Depoimentos</p>
+        <h2 class="section-title" data-split-lines>Quem confia, recomenda.</h2>
+      </div>
+      <div class="testimonial-carousel" id="testimonialCarousel">
+        <div class="testimonial-slide is-active">
+          <p>&ldquo;A Vantra transformou nossa cadeia de suprimentos. Prazos cumpridos e visibilidade total em cada etapa.&rdquo;</p>
+          <div class="testimonial-author"><strong>Marina Costa</strong><span>Diretora de Operações, Grupo Aurora</span></div>
+        </div>
+        <div class="testimonial-slide">
+          <p>&ldquo;Profissionalismo raro no setor. A frota é impecável e o suporte é imediato quando precisamos.&rdquo;</p>
+          <div class="testimonial-author"><strong>Rafael Almeida</strong><span>CEO, Nortemax Indústria</span></div>
+        </div>
+        <div class="testimonial-slide">
+          <p>&ldquo;O rastreamento em tempo real mudou completamente nossa relação com clientes finais.&rdquo;</p>
+          <div class="testimonial-author"><strong>Bianca Ferreira</strong><span>Head de Supply Chain, Litoral Foods</span></div>
+        </div>
+      </div>
+      <div class="testimonial-dots" id="testimonialDots"></div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PARTNERS
+  ============================================================= -->
+  <section id="partners" class="partners">
+    <div class="container">
+      <p class="section-eyebrow" data-reveal style="text-align:center">Parceiros que confiam na Vantra</p>
+      <div class="partners__row">
+        <span class="partner-logo">NORTEMAX</span>
+        <span class="partner-logo">AURORA GROUP</span>
+        <span class="partner-logo">LITORAL FOODS</span>
+        <span class="partner-logo">CONSTRUBRAS</span>
+        <span class="partner-logo">FERRO&amp;AÇO</span>
+        <span class="partner-logo">AGROVALE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       STATS
+  ============================================================= -->
+  <section id="stats" class="stats">
+    <div class="container stats__grid">
+      <div class="stat-item">
+        <span class="stat-number" data-count="20" data-suffix="+">0</span>
+        <span class="stat-label">Anos de mercado</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="1200" data-suffix="+">0</span>
+        <span class="stat-label">Veículos na frota</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="98" data-suffix="%">0</span>
+        <span class="stat-label">Entregas no prazo</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-number" data-count="5500" data-suffix="+">0</span>
+        <span class="stat-label">Municípios atendidos</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CTA
+  ============================================================= -->
+  <section id="cta-final" class="cta">
+    <div class="cta__glow"></div>
+    <div class="container cta__content">
+      <h2 class="cta__title" data-split-lines>Pronto para mover<br>seu negócio?</h2>
+      <p data-reveal>Fale com nossos especialistas e receba uma proposta personalizada em até 24 horas.</p>
+      <a href="#contact" class="btn btn--primary btn--large magnetic" data-reveal><span>Falar com um Especialista</span></a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+  ============================================================= -->
+  <section id="contact" class="contact">
+    <div class="container contact__grid">
+      <div class="contact__text">
+        <p class="section-eyebrow" data-reveal>Contato</p>
+        <h2 class="section-title" data-split-lines>Vamos conversar sobre<br>sua próxima entrega.</h2>
+        <div class="contact__info" data-reveal>
+          <p><strong>Telefone</strong><br>0800 555 0123</p>
+          <p><strong>E-mail</strong><br>contato@vantra.com.br</p>
+          <p><strong>Sede</strong><br>Av. das Nações, 1500 — São Paulo, SP</p>
+        </div>
+      </div>
+      <form class="contact__form" id="contactForm" data-reveal>
+        <div class="form-row">
+          <input type="text" name="name" placeholder="Nome completo" required>
+          <input type="email" name="email" placeholder="E-mail" required>
+        </div>
+        <input type="text" name="company" placeholder="Empresa">
+        <textarea name="message" rows="4" placeholder="Conte sobre sua necessidade de transporte" required></textarea>
+        <button type="submit" class="btn btn--primary magnetic"><span>Enviar Mensagem</span></button>
+        <p class="contact__form-status" id="formStatus"></p>
+      </form>
+    </div>
+  </section>
+
+</div><!-- /#smooth-content -->
+</main>
+
+<!-- ============================================================
+     FOOTER
+============================================================= -->
+<footer class="footer">
+  <div class="container footer__grid">
+    <div class="footer__brand">
+      <span class="footer__logo">VANTRA<span>.</span></span>
+      <p>Movendo o Brasil com confiança há mais de 20 anos.</p>
+    </div>
+    <div class="footer__col">
+      <h4>Empresa</h4>
+      <a href="#about">Sobre</a>
+      <a href="#services">Serviços</a>
+      <a href="#fleet">Frota</a>
+      <a href="#testimonials">Depoimentos</a>
+    </div>
+    <div class="footer__col">
+      <h4>Soluções</h4>
+      <a href="#tracking">Rastreamento</a>
+      <a href="#coverage">Cobertura</a>
+      <a href="#gallery">Galeria</a>
+      <a href="#contact">Contato</a>
+    </div>
+    <div class="footer__col">
+      <h4>Redes</h4>
+      <a href="#">Instagram</a>
+      <a href="#">LinkedIn</a>
+      <a href="#">YouTube</a>
+    </div>
+  </div>
+  <div class="container footer__bottom">
+    <span>&copy; 2026 Vantra Logística. Todos os direitos reservados.</span>
+    <span>CNPJ 00.000.000/0001-00</span>
+  </div>
+</footer>
+
+<!-- ============ VENDOR LIBRARIES (self-hosted, no external CDN) ============ -->
+<script src="vendor/gsap/gsap.min.js"></script>
+<script src="vendor/gsap/ScrollTrigger.min.js"></script>
+<script src="vendor/gsap/MotionPathPlugin.min.js"></script>
+<script src="vendor/lenis/lenis.min.js"></script>
+<script src="vendor/split-type/split-type.min.js"></script>
+
+<!-- ============ APP ============ -->
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
