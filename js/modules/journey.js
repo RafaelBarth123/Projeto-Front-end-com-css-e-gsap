@@ -1,9 +1,9 @@
-import { getWheels, getSmoke, getDoor, spinWheels, swingDoor } from './truck.js';
+import { getSmoke } from './truck.js';
 
 // ==========================================================================
 // The Journey — six pinned scenes the truck drives through. Each scene pins
 // for a scroll distance while a scrubbed timeline drives parallax layers,
-// the truck's wheels/suspension, and the scene's signature effect. A couple
+// the truck's suspension bounce, and the scene's signature effect. A couple
 // of ambient loops (smoke, rain, lightning, stars, clouds) run independently
 // so the world feels alive, gated on/off as the scene enters/leaves view.
 // ==========================================================================
@@ -91,10 +91,9 @@ function buildStars(container, count = 50) {
   }
 }
 
-/** Shared plumbing every scene needs: pin, scrub timeline, wheels, text. */
+/** Shared plumbing every scene needs: pin, scrub timeline, suspension, text. */
 function baseScene(sceneEl) {
   const truckEl = sceneEl.querySelector('.truck');
-  const wheels = getWheels(truckEl);
   const smoke = getSmoke(truckEl);
 
   idleTruckLife(truckEl);
@@ -114,7 +113,7 @@ function baseScene(sceneEl) {
 
   revealSceneText(tl, sceneEl);
 
-  return { tl, truckEl, wheels };
+  return { tl, truckEl };
 }
 
 // ---------------------------------------------------------------
@@ -122,7 +121,7 @@ function baseScene(sceneEl) {
 // ---------------------------------------------------------------
 
 function sceneDepart(sceneEl) {
-  const { tl, wheels } = baseScene(sceneEl);
+  const { tl } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
     '.layer--sun': 0.03,
     '.layer--mountains': 0.1,
@@ -132,11 +131,10 @@ function sceneDepart(sceneEl) {
     '.layer--road-depart': 0.5,
   });
   tl.to(sceneEl.querySelector('.road-lane-lines'), { backgroundPositionX: -600, ease: 'none' }, 0);
-  spinWheels(tl, wheels);
 }
 
 function sceneCity(sceneEl) {
-  const { tl, wheels } = baseScene(sceneEl);
+  const { tl } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
     '.layer--buildings-back': 0.08,
     '.layer--crane': 0.14,
@@ -153,11 +151,10 @@ function sceneCity(sceneEl) {
     tl.to(hook, { y: 30, duration: 0.3, ease: 'power1.inOut' }, 0.25)
       .to(hook, { y: 0, duration: 0.3, ease: 'power1.inOut' }, 0.55);
   }
-  spinWheels(tl, wheels);
 }
 
 function sceneWarehouse(sceneEl) {
-  const { tl, wheels } = baseScene(sceneEl);
+  const { tl } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
     '.layer--pallets': 0.08,
     '.layer--floor-warehouse': 0.4,
@@ -188,11 +185,10 @@ function sceneWarehouse(sceneEl) {
   sceneEl.querySelectorAll('.stack-container').forEach((box, i) => {
     tl.from(box, { y: 60, opacity: 0, duration: 0.3, ease: 'power2.out' }, 0.3 + i * 0.08);
   });
-  spinWheels(tl, wheels);
 }
 
 function sceneHighway(sceneEl) {
-  const { tl, truckEl, wheels } = baseScene(sceneEl);
+  const { tl, truckEl } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
     '.layer--hills': 0.1,
     '.layer--hills-2': 0.16,
@@ -215,12 +211,10 @@ function sceneHighway(sceneEl) {
     .to(stars, { opacity: 1, duration: 0.6, ease: 'none' }, 0.45)
     .to(lamps, { opacity: 1, duration: 0.3, stagger: 0.03, ease: 'none' }, 0.4)
     .call(() => truckEl.classList.add('is-lights-on'), null, 0.4);
-
-  spinWheels(tl, wheels);
 }
 
 function sceneStorm(sceneEl) {
-  const { tl, truckEl, wheels } = baseScene(sceneEl);
+  const { tl, truckEl } = baseScene(sceneEl);
   truckEl.classList.add('is-lights-on');
 
   parallax(tl, sceneEl, {
@@ -242,26 +236,19 @@ function sceneStorm(sceneEl) {
 
   // subtle extra shake to sell the storm
   gsap.to(sceneEl.querySelector('.truck-stage'), { x: '+=3', duration: 0.09, repeat: -1, yoyo: true, ease: 'sine.inOut' });
-
-  spinWheels(tl, wheels);
 }
 
 function sceneDelivery(sceneEl) {
-  const { tl, truckEl, wheels } = baseScene(sceneEl);
-  const door = getDoor(truckEl);
+  const { tl } = baseScene(sceneEl);
   const client = sceneEl.querySelector('.layer--client-person');
   const boxes = sceneEl.querySelectorAll('.box');
 
   gsap.set(client, { opacity: 0, y: 20 });
 
-  if (door) {
-    swingDoor(tl, door, -108, 0.15, 0.3);
-  }
   boxes.forEach((box, i) => {
     tl.to(box, { opacity: 1, y: -6, duration: 0.2, ease: 'power2.out' }, 0.35 + i * 0.1);
   });
   tl.to(client, { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' }, 0.55);
-  spinWheels(tl, wheels);
 }
 
 // ---------------------------------------------------------------

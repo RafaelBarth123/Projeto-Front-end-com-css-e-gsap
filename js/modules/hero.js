@@ -1,8 +1,8 @@
-import { getWheels, getSmoke, spinWheels } from './truck.js';
+import { getSmoke } from './truck.js';
 
 // ==========================================================================
 // Hero: entrance timeline + "engine start" as soon as the user begins to
-// scroll (headlights on, smoke, wheels spinning, suspension bounce).
+// scroll (headlights on, smoke, suspension bounce).
 // ==========================================================================
 
 function buildParticles() {
@@ -38,7 +38,6 @@ export function initHero() {
   const truckEl = document.querySelector('#heroTruckStage .truck');
   if (!truckEl) return;
 
-  const wheels = getWheels(truckEl);
   const smoke = getSmoke(truckEl);
 
   // Entrance timeline
@@ -89,6 +88,4 @@ export function initHero() {
     .to('.hero__road-lines', { backgroundPositionX: -400, ease: 'none' }, 0)
     .to('.hero__content', { yPercent: -30, opacity: 0.3, ease: 'none' }, 0)
     .to('.hero__truck-stage', { x: '18vw', ease: 'none' }, 0);
-
-  spinWheels(startTl, wheels, 360 * 6);
 }
