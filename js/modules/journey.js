@@ -1,4 +1,4 @@
-import { getWheels, getSmoke, getDoor, spinWheels, swingDoor } from './truck.js';
+import { getWheels, getSmoke, getDoor, spinWheels, rollDoor } from './truck.js';
 
 // ==========================================================================
 // The Journey — six pinned scenes the truck drives through. Each scene pins
@@ -64,10 +64,10 @@ function scheduleLightning(el, reflectionEl) {
   const flash = () => {
     if (!active) return;
     gsap.timeline()
-      .to(el, { opacity: 0.85, duration: 0.06 })
+      .to(el, { opacity: 0.5, duration: 0.06 })
       .to(el, { opacity: 0, duration: 0.14 })
-      .to(el, { opacity: 0.55, duration: 0.05 })
-      .to(el, { opacity: 0, duration: 0.3 });
+      .to(el, { opacity: 0.3, duration: 0.05 })
+      .to(el, { opacity: 0, duration: 0.34 });
     if (reflectionEl) {
       gsap.fromTo(reflectionEl, { opacity: 0.4 }, { opacity: 0.12, duration: 0.5 });
     }
@@ -124,12 +124,15 @@ function baseScene(sceneEl) {
 function sceneDepart(sceneEl) {
   const { tl, wheels } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
-    '.layer--sun': 0.03,
+    '.layer--ridge-far': 0.06,
     '.layer--mountains': 0.1,
+    '.layer--ridge-near': 0.14,
     '.layer--hq': 0.18,
+    '.layer--treeline': 0.22,
     '.layer--trees': 0.3,
     '.layer--sign': 0.34,
-    '.layer--road-depart': 0.5,
+    '.layer--fence': 0.4,
+    '.layer--grass': 0.62,
   });
   tl.to(sceneEl.querySelector('.road-lane-lines'), { backgroundPositionX: -600, ease: 'none' }, 0);
   spinWheels(tl, wheels);
@@ -138,11 +141,13 @@ function sceneDepart(sceneEl) {
 function sceneCity(sceneEl) {
   const { tl, wheels } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
+    '.layer--skyline-far': 0.04,
     '.layer--buildings-back': 0.08,
     '.layer--crane': 0.14,
+    '.layer--overpass': 0.18,
     '.layer--containers-city': 0.22,
     '.layer--buildings-front': 0.32,
-    '.layer--road-city': 0.5,
+    '.layer--streetlights': 0.4,
   });
   tl.to(sceneEl.querySelector('.road-lane-lines'), { backgroundPositionX: -600, ease: 'none' }, 0);
 
@@ -158,20 +163,12 @@ function sceneCity(sceneEl) {
 
 function sceneWarehouse(sceneEl) {
   const { tl, wheels } = baseScene(sceneEl);
-  parallax(tl, sceneEl, {
-    '.layer--pallets': 0.08,
-    '.layer--floor-warehouse': 0.4,
-  });
+  parallax(tl, sceneEl, { '.layer--pallets': 0.08 });
 
-  // Doors slide open as the truck approaches, close again after it passes
-  const doorL = sceneEl.querySelector('.warehouse-door--left');
-  const doorR = sceneEl.querySelector('.warehouse-door--right');
-  if (doorL && doorR) {
-    tl.to(doorL, { xPercent: -100, duration: 0.3, ease: 'power2.inOut' }, 0.05)
-      .to(doorR, { xPercent: 100, duration: 0.3, ease: 'power2.inOut' }, 0.05)
-      .to(doorL, { xPercent: 0, duration: 0.25, ease: 'power2.inOut' }, 0.8)
-      .to(doorR, { xPercent: 0, duration: 0.25, ease: 'power2.inOut' }, 0.8);
-  }
+  // Roller shutters wind up as the truck arrives, staggered down the row
+  const shutters = sceneEl.querySelectorAll('[data-dock-door]');
+  tl.to(shutters, { scaleY: 0.06, duration: 0.32, stagger: 0.05, ease: 'power2.inOut' }, 0.05)
+    .to(shutters, { scaleY: 1, duration: 0.28, stagger: 0.04, ease: 'power2.inOut' }, 0.82);
 
   // Forklift trundles back and forth, fork bobs
   const forklift = sceneEl.querySelector('.layer--forklift');
@@ -194,10 +191,11 @@ function sceneWarehouse(sceneEl) {
 function sceneHighway(sceneEl) {
   const { tl, truckEl, wheels } = baseScene(sceneEl);
   parallax(tl, sceneEl, {
+    '.layer--hills-far': 0.05,
     '.layer--hills': 0.1,
     '.layer--hills-2': 0.16,
-    '.layer--road-highway': 0.5,
     '.layer--roadside-lights': 0.34,
+    '.layer--guardrail': 0.44,
   });
   tl.to(sceneEl.querySelector('.road-lane-lines'), { backgroundPositionX: -700, ease: 'none' }, 0);
 
@@ -210,7 +208,8 @@ function sceneHighway(sceneEl) {
   const lamps = sceneEl.querySelectorAll('.light-pole__lamp');
 
   tl.to(night, { opacity: 1, ease: 'none' }, 0)
-    .to(sun, { x: 160, y: 90, opacity: 0, duration: 1, ease: 'none' }, 0)
+    .to(sun, { x: 160, y: 110, ease: 'none' }, 0)
+    .to(sun, { opacity: 0, duration: 0.34, ease: 'power2.in' }, 0)
     .to(moon, { opacity: 1, duration: 0.6, ease: 'none' }, 0.35)
     .to(stars, { opacity: 1, duration: 0.6, ease: 'none' }, 0.45)
     .to(lamps, { opacity: 1, duration: 0.3, stagger: 0.03, ease: 'none' }, 0.4)
@@ -224,15 +223,17 @@ function sceneStorm(sceneEl) {
   truckEl.classList.add('is-lights-on');
 
   parallax(tl, sceneEl, {
+    '.layer--hills-storm-far': 0.05,
     '.layer--hills-storm': 0.1,
-    '.layer--road-storm': 0.5,
+    '.layer--bent-trees': 0.3,
   });
   tl.to(sceneEl.querySelector('.road-lane-lines'), { backgroundPositionX: -800, ease: 'none' }, 0);
 
   const fog = sceneEl.querySelector('.layer--fog');
   gsap.to(fog, { xPercent: 6, duration: 8, repeat: -1, yoyo: true, ease: 'sine.inOut' });
 
-  tl.to(sceneEl.querySelector('.layer--rain'), { opacity: 1, duration: 0.4, ease: 'none' }, 0);
+  tl.to(sceneEl.querySelectorAll('.layer--rain'), { opacity: 1, duration: 0.4, ease: 'none' }, 0)
+    .to(sceneEl.querySelector('.layer--rain-mist'), { opacity: 1, duration: 0.5, ease: 'none' }, 0.1);
 
   const lightning = scheduleLightning(
     sceneEl.querySelector('.layer--lightning'),
@@ -250,13 +251,16 @@ function sceneDelivery(sceneEl) {
   const { tl, truckEl, wheels } = baseScene(sceneEl);
   const door = getDoor(truckEl);
   const client = sceneEl.querySelector('.layer--client-person');
+  const jack = sceneEl.querySelector('.layer--pallet-jack');
   const boxes = sceneEl.querySelectorAll('.box');
 
   gsap.set(client, { opacity: 0, y: 20 });
+  gsap.set(jack, { opacity: 0, x: 40 });
 
   if (door) {
-    swingDoor(tl, door, -108, 0.15, 0.3);
+    rollDoor(tl, door, 0.15, 0.3);
   }
+  tl.to(jack, { opacity: 1, x: 0, duration: 0.35, ease: 'power2.out' }, 0.4);
   boxes.forEach((box, i) => {
     tl.to(box, { opacity: 1, y: -6, duration: 0.2, ease: 'power2.out' }, 0.35 + i * 0.1);
   });

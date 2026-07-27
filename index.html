@@ -103,24 +103,42 @@
     <section class="scene scene--depart" data-scene="depart">
       <div class="scene__bg">
         <div class="layer layer--sky-day"></div>
+        <div class="layer layer--sun-rays"></div>
         <div class="layer layer--sun"></div>
+        <div class="layer layer--birds">
+          <span class="bird" style="--i:0"></span><span class="bird" style="--i:1"></span>
+          <span class="bird" style="--i:2"></span><span class="bird" style="--i:3"></span>
+          <span class="bird" style="--i:4"></span>
+        </div>
         <div class="layer layer--clouds">
           <span class="cloud c1"></span><span class="cloud c2"></span><span class="cloud c3"></span>
+          <span class="cloud c4"></span><span class="cloud c5"></span>
         </div>
+        <div class="layer layer--ridge-far"></div>
         <div class="layer layer--mountains"></div>
+        <div class="layer layer--ridge-near"></div>
+        <div class="layer layer--haze"></div>
         <div class="layer layer--hq">
-          <div class="hq-building"><span class="hq-logo">VANTRA</span></div>
+          <div class="hq-annex"></div>
+          <div class="hq-building">
+            <span class="hq-logo">VANTRA</span>
+            <span class="hq-windows"></span>
+          </div>
+          <div class="hq-mast"><i></i></div>
         </div>
-        <div class="layer layer--trees">
-          <span class="tree" style="--i:0"></span><span class="tree" style="--i:1"></span>
-          <span class="tree" style="--i:2"></span><span class="tree" style="--i:3"></span>
-          <span class="tree" style="--i:4"></span><span class="tree" style="--i:5"></span>
-          <span class="tree" style="--i:6"></span><span class="tree" style="--i:7"></span>
-        </div>
+        <div class="layer layer--treeline"></div>
+        <div class="layer layer--trees"></div>
+        <div class="layer layer--fence"></div>
         <div class="layer layer--sign">
           <div class="road-sign"><span>BR-101<br>→ TODO O BRASIL</span></div>
         </div>
-        <div class="layer layer--road-depart"><div class="road-lane-lines"></div></div>
+        <div class="layer layer--road-depart">
+          <div class="road-shoulder"></div>
+          <div class="road-edge-line"></div>
+          <div class="road-lane-lines"></div>
+          <div class="road-grain"></div>
+        </div>
+        <div class="layer layer--grass"></div>
       </div>
       <div class="truck-stage" data-truck data-truck-size="scene"></div>
       <div class="scene__content">
@@ -133,11 +151,9 @@
     <section class="scene scene--city" data-scene="city">
       <div class="scene__bg">
         <div class="layer layer--sky-city"></div>
-        <div class="layer layer--buildings-back">
-          <span class="building" style="--i:0"></span><span class="building" style="--i:1"></span>
-          <span class="building" style="--i:2"></span><span class="building" style="--i:3"></span>
-          <span class="building" style="--i:4"></span>
-        </div>
+        <div class="layer layer--city-glow"></div>
+        <div class="layer layer--skyline-far"></div>
+        <div class="layer layer--buildings-back"></div>
         <div class="layer layer--crane">
           <svg viewBox="0 0 200 220" class="crane-svg">
             <rect x="95" y="20" width="10" height="180" fill="currentColor"/>
@@ -149,17 +165,23 @@
             <rect class="crane-hook" x="20" y="140" width="40" height="30" rx="3" fill="var(--clr-amber)"/>
           </svg>
         </div>
-        <div class="layer layer--buildings-front">
-          <span class="building building--front" style="--i:0"></span>
-          <span class="building building--front" style="--i:1"></span>
-          <span class="building building--front" style="--i:2"></span>
-          <span class="building building--front" style="--i:3"></span>
+        <div class="layer layer--overpass">
+          <span class="overpass-deck"></span>
+          <span class="overpass-pillar" style="--i:0"></span>
+          <span class="overpass-pillar" style="--i:1"></span>
         </div>
+        <div class="layer layer--buildings-front"></div>
         <div class="layer layer--containers-city">
           <span class="container" style="--i:0"></span><span class="container" style="--i:1"></span>
           <span class="container" style="--i:2"></span>
         </div>
-        <div class="layer layer--road-city"><div class="road-lane-lines"></div></div>
+        <div class="layer layer--streetlights"></div>
+        <div class="layer layer--road-city">
+          <div class="road-shoulder"></div>
+          <div class="road-edge-line"></div>
+          <div class="road-lane-lines"></div>
+          <div class="road-grain"></div>
+        </div>
       </div>
       <div class="truck-stage" data-truck data-truck-size="scene"></div>
       <div class="scene__content">
@@ -173,10 +195,36 @@
       <div class="scene__bg">
         <div class="layer layer--sky-warehouse"></div>
         <div class="layer layer--warehouse-wall">
-          <div class="warehouse-roofline"></div>
-          <div class="warehouse-opening"></div>
-          <div class="warehouse-door warehouse-door--left"></div>
-          <div class="warehouse-door warehouse-door--right"></div>
+          <div class="wh-roof"></div>
+          <div class="wh-sign">VANTRA <b>·</b> CENTRO DE DISTRIBUIÇÃO</div>
+          <div class="wh-bay" style="--i:0">
+            <span class="wh-bay__interior"></span>
+            <span class="wh-bay__spill"></span>
+            <span class="wh-bay__door" data-dock-door></span>
+            <b class="wh-bay__num">01</b>
+            <i class="wh-bay__lamp"></i>
+          </div>
+          <div class="wh-bay" style="--i:1">
+            <span class="wh-bay__interior"></span>
+            <span class="wh-bay__spill"></span>
+            <span class="wh-bay__door" data-dock-door></span>
+            <b class="wh-bay__num">02</b>
+            <i class="wh-bay__lamp"></i>
+          </div>
+          <div class="wh-bay" style="--i:2">
+            <span class="wh-bay__interior"></span>
+            <span class="wh-bay__spill"></span>
+            <span class="wh-bay__door" data-dock-door></span>
+            <b class="wh-bay__num">03</b>
+            <i class="wh-bay__lamp"></i>
+          </div>
+          <div class="wh-bay" style="--i:3">
+            <span class="wh-bay__interior"></span>
+            <span class="wh-bay__spill"></span>
+            <span class="wh-bay__door" data-dock-door></span>
+            <b class="wh-bay__num">04</b>
+            <i class="wh-bay__lamp"></i>
+          </div>
         </div>
         <div class="layer layer--forklift">
           <svg viewBox="0 0 140 100" class="forklift-svg">
@@ -196,7 +244,11 @@
           <span class="stack-container" style="--i:1"></span>
           <span class="stack-container" style="--i:2"></span>
         </div>
-        <div class="layer layer--floor-warehouse"></div>
+        <div class="layer layer--floor-warehouse">
+          <div class="dock-edge"></div>
+          <div class="floor-hazard"></div>
+          <div class="floor-sheen"></div>
+        </div>
       </div>
       <div class="truck-stage" data-truck data-truck-size="scene"></div>
       <div class="scene__content">
@@ -215,14 +267,29 @@
         <div class="layer layer--sun-moving"><div class="sun-disc"></div></div>
         <div class="layer layer--moon-rising"><div class="moon-disc"></div></div>
         <div class="layer layer--stars" id="starsLayer"></div>
+        <div class="layer layer--hills-far"></div>
         <div class="layer layer--hills"></div>
         <div class="layer layer--hills-2"></div>
-        <div class="layer layer--road-highway"><div class="road-lane-lines road-lane-lines--fast"></div></div>
+        <div class="layer layer--haze-highway"></div>
         <div class="layer layer--roadside-lights">
           <span class="light-pole" style="--i:0"><i class="light-pole__lamp"></i></span>
           <span class="light-pole" style="--i:1"><i class="light-pole__lamp"></i></span>
           <span class="light-pole" style="--i:2"><i class="light-pole__lamp"></i></span>
           <span class="light-pole" style="--i:3"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:4"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:5"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:6"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:7"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:8"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:9"><i class="light-pole__lamp"></i></span>
+          <span class="light-pole" style="--i:10"><i class="light-pole__lamp"></i></span>
+        </div>
+        <div class="layer layer--guardrail"></div>
+        <div class="layer layer--road-highway">
+          <div class="road-shoulder"></div>
+          <div class="road-edge-line"></div>
+          <div class="road-lane-lines road-lane-lines--fast"></div>
+          <div class="road-grain"></div>
         </div>
       </div>
       <div class="truck-stage" data-truck data-truck-size="scene"></div>
@@ -236,14 +303,32 @@
     <section class="scene scene--storm" data-scene="storm">
       <div class="scene__bg">
         <div class="layer layer--sky-storm"></div>
+        <div class="layer layer--storm-clouds">
+          <span class="storm-cloud" style="--i:0"></span><span class="storm-cloud" style="--i:1"></span>
+          <span class="storm-cloud" style="--i:2"></span><span class="storm-cloud" style="--i:3"></span>
+        </div>
         <div class="layer layer--lightning" id="lightningLayer"></div>
+        <div class="layer layer--hills-storm-far"></div>
         <div class="layer layer--fog"></div>
         <div class="layer layer--hills-storm"></div>
-        <div class="layer layer--rain" id="rainLayer"></div>
+        <div class="layer layer--bent-trees">
+          <span class="bent-tree" style="--i:0"></span><span class="bent-tree" style="--i:1"></span>
+          <span class="bent-tree" style="--i:2"></span><span class="bent-tree" style="--i:3"></span>
+          <span class="bent-tree" style="--i:4"></span><span class="bent-tree" style="--i:5"></span>
+          <span class="bent-tree" style="--i:6"></span><span class="bent-tree" style="--i:7"></span>
+          <span class="bent-tree" style="--i:8"></span><span class="bent-tree" style="--i:9"></span>
+          <span class="bent-tree" style="--i:10"></span>
+        </div>
+        <div class="layer layer--rain layer--rain-back"></div>
         <div class="layer layer--road-storm">
+          <div class="road-edge-line"></div>
           <div class="road-lane-lines road-lane-lines--fast"></div>
           <div class="road-reflection"></div>
+          <span class="puddle" style="--i:0"></span><span class="puddle" style="--i:1"></span>
+          <span class="puddle" style="--i:2"></span>
         </div>
+        <div class="layer layer--rain" id="rainLayer"></div>
+        <div class="layer layer--rain-mist"></div>
       </div>
       <div class="truck-stage" data-truck data-truck-size="scene"></div>
       <div class="scene__content">
@@ -256,7 +341,20 @@
     <section class="scene scene--delivery" data-scene="delivery">
       <div class="scene__bg">
         <div class="layer layer--sky-delivery"></div>
-        <div class="layer layer--client-building"></div>
+        <div class="layer layer--dusk-skyline"></div>
+        <div class="layer layer--client-building">
+          <span class="dock-canopy"></span>
+          <span class="dock-lamp" style="--i:0"></span><span class="dock-lamp" style="--i:1"></span>
+        </div>
+        <div class="layer layer--pallet-jack">
+          <svg viewBox="0 0 90 60" class="jack-svg">
+            <rect x="4" y="30" width="60" height="7" rx="2" fill="#3a3d44"/>
+            <rect x="60" y="6" width="6" height="30" rx="2" fill="#3a3d44"/>
+            <rect x="60" y="4" width="18" height="5" rx="2" fill="var(--clr-amber)"/>
+            <circle cx="12" cy="42" r="6" fill="#15161a"/>
+            <circle cx="56" cy="42" r="6" fill="#15161a"/>
+          </svg>
+        </div>
         <div class="layer layer--client-person">
           <svg viewBox="0 0 60 120" class="client-svg">
             <circle cx="30" cy="20" r="14" fill="#e8b28c"/>
@@ -268,7 +366,10 @@
         <div class="layer layer--boxes">
           <span class="box" style="--i:0"></span><span class="box" style="--i:1"></span><span class="box" style="--i:2"></span>
         </div>
-        <div class="layer layer--floor-delivery"></div>
+        <div class="layer layer--floor-delivery">
+          <div class="floor-hazard"></div>
+          <div class="floor-sheen"></div>
+        </div>
       </div>
       <div class="truck-stage truck-stage--parked" data-truck data-truck-size="scene" data-truck-doors></div>
       <div class="scene__content">

@@ -260,13 +260,11 @@ export function spinWheels(tl, wheels, totalDegrees = 360 * 9) {
   });
 }
 
-/** Same GSAP/SVG origin workaround as `spinWheels`, for the trailer door. */
-export function swingDoor(tl, door, degrees, position, duration) {
-  const proxy = { angle: 0 };
-  tl.to(proxy, {
-    angle: degrees,
-    duration,
-    ease: 'power2.inOut',
-    onUpdate: () => { door.style.transform = `rotate(${proxy.angle}deg)`; },
-  }, position);
+/** Winds the roll-up cargo door open, then shut. Same GSAP/SVG
+ *  transform-origin workaround as `spinWheels` — see the note there. */
+export function rollDoor(tl, door, position, duration) {
+  const proxy = { scale: 1 };
+  const write = () => { door.style.transform = `scaleY(${proxy.scale})`; };
+  tl.to(proxy, { scale: 0.05, duration, ease: 'power2.inOut', onUpdate: write }, position)
+    .to(proxy, { scale: 1, duration, ease: 'power2.inOut', onUpdate: write }, 0.82);
 }
