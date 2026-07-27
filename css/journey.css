@@ -163,34 +163,56 @@
 
 .truck { overflow: visible; }
 
-.truck__shadow { fill: rgba(0,0,0,0.45); filter: blur(4px); }
-.truck__body-trailer { fill: #e8e9ec; }
-.truck__body-trailer-shade { fill: #c8c9cf; }
-.truck__trailer-stripe { fill: var(--clr-amber); }
-.truck__trailer-logo { fill: #14161a; font-family: var(--font-display); font-weight: 700; }
-.truck__cab-body { fill: #d7481f; }
-.truck__cab-body-dark { fill: #a6350f; }
-.truck__cab-window { fill: #7fd0e8; opacity: .9; }
-.truck__cab-window-frame { fill: #1c1d20; }
-.truck__chassis { fill: #1c1d20; }
-.truck__bumper { fill: #22242a; }
-.truck__exhaust-pipe { fill: #8b8d94; }
+.truck__shadow { fill: rgba(0,0,0,0.5); filter: blur(6px); }
 
-.truck__headlight { fill: #fff6d8; opacity: .55; transition: opacity .4s; }
+/* --- cargo box --- */
+.truck__box-skirt { fill: rgba(96,100,110,0.22); }
+.truck__corrugation line { stroke: rgba(120,124,134,0.3); stroke-width: 1.5; }
+.truck__stripe-edge { fill: rgba(0,0,0,0.16); }
+.truck__logo-mark { fill: var(--clr-amber); }
+.truck__trailer-logo { fill: #14161a; font-family: var(--font-display); font-weight: 700; letter-spacing: -0.5px; }
+.truck__trailer-tagline { fill: #7c8089; font-family: var(--font-display); font-weight: 600; }
+.truck__box-markers rect { fill: #ff9c2e; }
+.truck__door-handle { fill: #74787f; }
+
+/* --- chassis --- */
+.truck__chassis { fill: #1a1c20; }
+.truck__mudflap { fill: #141518; }
+.truck__underride { fill: #2a2c31; }
+.truck__fuel-tank-band { stroke: rgba(60,63,70,0.45); stroke-width: 2.5; }
+
+/* --- cab --- */
+.truck__cab-shade { fill: rgba(0,0,0,0.22); }
+.truck__glass-shine { fill: rgba(255,255,255,0.35); }
+.truck__cab-seam { stroke: rgba(0,0,0,0.3); stroke-width: 2; }
+.truck__cab-handle { fill: #f2f3f5; }
+.truck__cab-step { fill: #33363c; }
+.truck__mirror-arm { stroke: #26282d; stroke-width: 3.5; stroke-linecap: round; }
+.truck__mirror { fill: #26282d; }
+.truck__grille-bar { stroke: #33363c; stroke-width: 2.5; }
+.truck__turn-signal { fill: #ffa233; }
+.truck__exhaust-cap { fill: #70747c; }
+
+/* --- lights --- */
+.truck__headlight { fill: #fff6d8; opacity: .6; transition: opacity .4s; }
 .truck__headlight-glow {
   fill: #ffdf9e;
   opacity: 0;
-  filter: blur(6px);
+  filter: blur(8px);
   transition: opacity .4s;
 }
 .truck.is-lights-on .truck__headlight { opacity: 1; }
-.truck.is-lights-on .truck__headlight-glow { opacity: .85; }
+.truck.is-lights-on .truck__headlight-glow { opacity: .95; }
 
 .truck__taillight { fill: #ff3b30; opacity: .7; }
+.truck__taillight-amber { fill: #ff9c2e; opacity: .6; }
+.truck.is-lights-on .truck__taillight { opacity: 1; }
 
-.truck__wheel-hub { fill: #2b2d33; }
-.truck__wheel-tire { fill: #111214; }
-.truck__wheel-spokes { stroke: #55575f; stroke-width: 2; }
+/* --- wheels --- */
+.truck__wheel-tread { fill: none; stroke: rgba(96,100,110,0.45); stroke-width: 3; stroke-dasharray: 6 6; }
+.truck__wheel-spokes { stroke: rgba(90,94,104,0.55); stroke-width: 3; stroke-linecap: round; }
+.truck__wheel-cap { fill: #6b6f78; }
+.truck__wheel-lugs circle { fill: rgba(70,74,82,0.75); }
 /* transform-origin is set inline per wheel (in viewBox units, the SVG
    default reference box) — fill-box drifts badly at the large rotation
    values used for the scrubbed spin, so it is deliberately not used here. */
